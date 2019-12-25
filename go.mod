@@ -4,8 +4,11 @@ go 1.13
 
 require (
 	github.com/TylerBrock/colorjson v0.0.0-20180527164720-95ec53f28296
+	github.com/aliyun/alibaba-cloud-sdk-go v1.60.302
+	github.com/aliyun/aliyun-oss-go-sdk v2.0.4+incompatible
 	github.com/araddon/dateparse v0.0.0-20190622164848-0fb0a474d195
 	github.com/axgle/mahonia v0.0.0-20180208002826-3358181d7394
+	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
 	github.com/clbanning/mxj v1.8.4
 	github.com/disintegration/imaging v1.6.2
 	github.com/fatih/color v1.7.0 // indirect
