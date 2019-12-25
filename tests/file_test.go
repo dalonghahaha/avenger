@@ -8,7 +8,7 @@ import (
 )
 
 func TestFileReadLines(t *testing.T) {
-	path := "sample.txt"
+	path := "./sample/texts/sample.txt"
 	result, err := file.ReadLines(path, 5, 2)
 	testingReport(t, result, err)
 	result, err = file.ReadLines(path, 0, 1)
@@ -27,8 +27,8 @@ func TestFileCheck(t *testing.T) {
 	fmt.Println("test1 is empty:", file.DirExists("test1"))
 	fmt.Println("../tests is empty:", file.DirExists("../tests"))
 	//文件都生效
-	fmt.Println("sample.txt is exists:", file.Exists("./sample/sample.txt"))
-	fmt.Println("sample1.txt is exists:", file.Exists("./sample/sample2.txt"))
+	fmt.Println("sample.txt is exists:", file.Exists("./sample/texts/sample.txt"))
+	fmt.Println("sample1.txt is exists:", file.Exists("./sample/texts/sample2.txt"))
 	fmt.Println("test is exists:", file.Exists("test"))
 	fmt.Println("test1 is empty:", file.DirExists("test1"))
 	//文件夹
@@ -38,7 +38,7 @@ func TestFileCheck(t *testing.T) {
 	//文件
 	fmt.Println("test.txt is empty:", file.IsEmpty("test.txt"))
 	fmt.Println("test1.txt is empty:", file.IsEmpty("test1.txt"))
-	fmt.Println("sample.txt is empty:", file.IsEmpty("./sample/sample.txt"))
+	fmt.Println("sample.txt is empty:", file.IsEmpty("./sample/texts/sample.txt"))
 }
 
 func TestFileRemove(t *testing.T) {
@@ -46,5 +46,5 @@ func TestFileRemove(t *testing.T) {
 }
 
 func TestFileCopy(t *testing.T) {
-	fmt.Println(file.CopyTo("./sample/sample.txt", "./sample/sample1.txt"))
+	fmt.Println(file.CopyTo("./sample/texts/sample.txt", "./sample/texts/sample1.txt"))
 }
