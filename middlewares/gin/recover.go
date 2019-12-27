@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"avenger/components/logger"
+	"github.com/dalonghahaha/avenger/components/logger"
 )
 
 func Recover(ctx *gin.Context) {

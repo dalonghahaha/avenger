@@ -1,7 +1,7 @@
 package coding
 
 import (
-	"avenger/structs"
+	"github.com/dalonghahaha/avenger/structs"
 
 	"github.com/clbanning/mxj"
 )

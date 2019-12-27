@@ -3,7 +3,7 @@ import (
 	"fmt"
 	"testing"
 	"github.com/spf13/viper"
-	"avenger/components/mail"
+	"github.com/dalonghahaha/avenger/components/mail"
 )
 func MailInit() {
 	viper.SetConfigName("conf")

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"avenger/tools/uuid"
+	"github.com/dalonghahaha/avenger/tools/uuid"
 )
 
 func TestUUID(t *testing.T) {

@@ -9,7 +9,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/spf13/viper"
 
-	"avenger/structs"
+	"github.com/dalonghahaha/avenger/structs"
 )
 
 var dbs = map[string]*gorm.DB{}

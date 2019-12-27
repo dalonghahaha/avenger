@@ -12,7 +12,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 
-	"avenger/tools/file"
+	"github.com/dalonghahaha/avenger/tools/file"
 )
 
 var logger *logrus.Logger

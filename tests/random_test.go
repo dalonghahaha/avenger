@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"avenger/tools/random"
+	"github.com/dalonghahaha/avenger/tools/random"
 )
 
 func TestRandom(t *testing.T) {

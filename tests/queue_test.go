@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/viper"
 	"gopkg.in/confluentinc/confluent-kafka-go.v100/kafka"
 
-	"avenger/components/queue"
+	"github.com/dalonghahaha/avenger/components/queue"
 )
 
 func QueueInit() {

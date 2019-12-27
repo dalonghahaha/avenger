@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"avenger/tools/file"
+	"github.com/dalonghahaha/avenger/tools/file"
 )
 
 func TestFileReadLines(t *testing.T) {

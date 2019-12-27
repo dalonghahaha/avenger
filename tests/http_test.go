@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"avenger/structs"
-	"avenger/tools/http"
+	"github.com/dalonghahaha/avenger/structs"
+	"github.com/dalonghahaha/avenger/tools/http"
 )
 
 func TestHttpGet(t *testing.T) {

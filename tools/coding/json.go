@@ -6,7 +6,7 @@ import (
 
 	"github.com/tidwall/gjson"
 
-	"avenger/structs"
+	"github.com/dalonghahaha/avenger/structs"
 )
 
 //JSONEncode Json编码

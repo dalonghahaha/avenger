@@ -9,8 +9,8 @@ import (
 	"github.com/go-redis/redis/v7"
 	"github.com/spf13/viper"
 
-	"avenger/components/cache"
-	"avenger/tools/coding"
+	"github.com/dalonghahaha/avenger/components/cache"
+	"github.com/dalonghahaha/avenger/tools/coding"
 )
 
 func RedisInit() {

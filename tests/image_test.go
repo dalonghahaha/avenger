@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"avenger/tools/image"
+	"github.com/dalonghahaha/avenger/tools/image"
 )
 
 func TestImage(t *testing.T) {

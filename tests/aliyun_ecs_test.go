@@ -7,7 +7,7 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"github.com/spf13/viper"
 
-	"avenger/thirdpartys/aliyun_ecs"
+	"github.com/dalonghahaha/avenger/thirdpartys/aliyun_ecs"
 )
 
 func EcsInit() {

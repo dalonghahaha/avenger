@@ -6,8 +6,8 @@ import (
 
 	"github.com/go-resty/resty/v2"
 
-	"avenger/structs"
-	"avenger/tools/coding"
+	"github.com/dalonghahaha/avenger/structs"
+	"github.com/dalonghahaha/avenger/tools/coding"
 )
 
 type client struct {

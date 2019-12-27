@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"avenger/structs"
-	"avenger/tools/coding"
+	"github.com/dalonghahaha/avenger/structs"
+	"github.com/dalonghahaha/avenger/tools/coding"
 )
 
 func TestJSON(t *testing.T) {

@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/viper"
 
-	"avenger/components/db"
+	"github.com/dalonghahaha/avenger/components/db"
 )
 
 func DBInit() {

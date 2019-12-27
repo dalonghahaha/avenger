@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/viper"
 
-	"avenger/thirdpartys/aliyun_oss"
+	"github.com/dalonghahaha/avenger/thirdpartys/aliyun_oss"
 )
 
 func OssInit() {
