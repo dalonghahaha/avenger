@@ -20,6 +20,7 @@ require (
 	github.com/jinzhu/gorm v1.9.11
 	github.com/logrusorgru/aurora v0.0.0-20191116043053-66b7ad493a23
 	github.com/mattn/go-colorable v0.1.4 // indirect
+	github.com/olivere/elastic/v7 v7.0.12
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/rs/xid v1.2.1
 	github.com/satori/go.uuid v1.2.0

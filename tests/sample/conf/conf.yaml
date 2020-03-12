@@ -1,0 +1,46 @@
+component:
+    db:
+        local:
+            host: "127.0.0.1"
+            port: 3306
+            user: "root"
+            password: ""
+            database: "test"
+    redis:
+        local:
+            host: "127.0.0.1"
+            port: 6379
+            password: ""
+            db: 0
+    kafka:
+        producer:
+            local: 
+                broker: "localhost:9092"
+        consumer:
+            local: 
+                broker: "localhost:9092"
+                group_id: "myGroup"
+    elasticsearch:
+        local:
+            host: "127.0.0.1"
+            port: 19200
+    mail:
+        qq:
+            host: "smtp.exmail.qq.com"
+            port: 465
+            user: "******"
+            password: "******"
+            tls: true
+thirdparty:
+    aliyun:
+        oss:
+            qingdao:
+                end_point: "oss-cn-qingdao.aliyuncs.com"
+                access_key_id: "LTAIwhbDYe1a6Cjw"
+                access_key_secret: "NJOuZ2kzcLMOWFZP5dZlnOReYjC7Ov"
+        ecs:
+            qingdao:
+                region_id: "cn-qingdao"
+                access_key_id: "LTAIwhbDYe1a6Cjw"
+                access_key_secret: "NJOuZ2kzcLMOWFZP5dZlnOReYjC7Ov"
+
