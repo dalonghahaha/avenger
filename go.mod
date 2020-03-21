@@ -23,11 +23,13 @@ require (
 	github.com/olivere/elastic/v7 v7.0.12
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/rs/xid v1.2.1
+	github.com/samuel/go-zookeeper v0.0.0-20190923202752-2cc03de413da
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.4.2
 	github.com/sony/sonyflake v1.0.0
 	github.com/spf13/afero v1.2.2
 	github.com/spf13/viper v1.6.1
+	github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71
 	github.com/tidwall/gjson v1.3.5
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/confluentinc/confluent-kafka-go.v100 v100.0.0-20190207121235-de05b1069faa

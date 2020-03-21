@@ -12,6 +12,12 @@ component:
             port: 6379
             password: ""
             db: 0
+    amqp:
+        local:
+            host: "127.0.0.1"
+            port: 5672
+            user: "guest"
+            password: "guest"
     kafka:
         producer:
             local: 
@@ -24,6 +30,9 @@ component:
         local:
             host: "127.0.0.1"
             port: 19200
+    zookeeper:
+        local:
+            hosts: "127.0.0.1:2181"
     mail:
         qq:
             host: "smtp.exmail.qq.com"

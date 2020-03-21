@@ -13,7 +13,7 @@ import (
 func QueueInit() {
 	viper.SetConfigName("conf")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("./sample")
+	viper.AddConfigPath("./sample/conf")
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic("go fuck yourself!:" + err.Error())
