@@ -1,4 +1,4 @@
-module avenger
+module github.com/dalonghahaha/avenger
 
 go 1.13
 
