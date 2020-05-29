@@ -15,7 +15,14 @@ import (
 	"github.com/dalonghahaha/avenger/tools/file"
 )
 
-var logger *logrus.Logger
+var (
+	inited  = false
+	level   = logrus.InfoLevel
+	dir     = "logs"
+	console = true
+	logger  *logrus.Logger
+	loggers map[string]*logrus.Logger
+)
 
 type FileFormatter struct {
 }
@@ -57,34 +64,42 @@ func (f *ConsoleFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	return []byte(data), nil
 }
 
-func Register() error {
-	loggerLevel := viper.GetString("component.log.level")
-	loggerDir := viper.GetString("component.log.dir")
-	loggerConsole := viper.GetBool("component.log.console")
-	if loggerLevel == "" || loggerDir == "" {
-		return fmt.Errorf("日志配置异常")
+func config() {
+	if inited {
+		return
 	}
-	if !file.Exists(loggerDir) {
-		err := file.Mkdir(loggerDir)
+	if viper.GetString("component.log.level") != "" {
+		_level := viper.GetString("component.log.level")
+		switch _level {
+		case "debug":
+			level = logrus.DebugLevel
+		case "info":
+			level = logrus.InfoLevel
+		case "error":
+			level = logrus.ErrorLevel
+		case "warn":
+			level = logrus.WarnLevel
+		}
+	}
+	if viper.GetString("component.log.dir") != "" {
+		dir = viper.GetString("component.log.dir")
+	}
+	if !viper.GetBool("component.log.console") {
+		console = viper.GetBool("component.log.console")
+	}
+}
+
+func Register() error {
+	config()
+	if !file.Exists(dir) {
+		err := file.Mkdir(dir)
 		if err != nil {
 			return fmt.Errorf("创建日志目录失败:%s", err.Error())
 		}
 	}
 	logger = logrus.New()
-	//日志级别设置
-	var level logrus.Level
-	switch loggerLevel {
-	case "debug":
-		level = logrus.DebugLevel
-	case "info":
-		level = logrus.InfoLevel
-	case "warn":
-		level = logrus.WarnLevel
-	default:
-		level = logrus.ErrorLevel
-	}
 	//控制台输出设置
-	if !loggerConsole {
+	if !console {
 		src, err := os.OpenFile(os.DevNull, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
 		if err != nil {
 			return fmt.Errorf("日志组件异常")
@@ -94,13 +109,45 @@ func Register() error {
 	logger.SetLevel(level)
 	logger.SetFormatter(&ConsoleFormatter{})
 	pathMap := lfshook.PathMap{
-		logrus.InfoLevel:  loggerDir + "info.log",
-		logrus.DebugLevel: loggerDir + "debug.log",
-		logrus.ErrorLevel: loggerDir + "error.log",
+		logrus.InfoLevel:  fmt.Sprintf("%s/info.log", dir),
+		logrus.DebugLevel: fmt.Sprintf("%s/debug.log", dir),
+		logrus.ErrorLevel: fmt.Sprintf("%s/error.log", dir),
+		logrus.WarnLevel:  fmt.Sprintf("%s/warn.log", dir),
 	}
 	hook := lfshook.NewHook(pathMap, &FileFormatter{})
 	logger.AddHook(hook)
 	return nil
+}
+
+func GetLogger(name string) (*logrus.Logger, error) {
+	config()
+	if _logger, ok := loggers[name]; ok {
+		return _logger, nil
+	}
+	if !file.Exists(dir) {
+		err := file.Mkdir(dir)
+		if err != nil {
+			return nil, fmt.Errorf("创建日志目录失败:%s", err.Error())
+		}
+	}
+	logger = logrus.New()
+	if !console {
+		src, err := os.OpenFile(os.DevNull, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
+		if err != nil {
+			return nil, fmt.Errorf("日志组件异常")
+		}
+		logger.Out = bufio.NewWriter(src)
+	}
+	logger.SetLevel(level)
+	logger.SetFormatter(&ConsoleFormatter{})
+	pathMap := lfshook.PathMap{
+		logrus.InfoLevel:  fmt.Sprintf("%s/%s.log", dir, name),
+		logrus.DebugLevel: fmt.Sprintf("%s/%s.log", dir, name),
+		logrus.ErrorLevel: fmt.Sprintf("%s/%s.log", dir, name),
+		logrus.WarnLevel:  fmt.Sprintf("%s/%s.log", dir, name),
+	}
+	hook := lfshook.NewHook(pathMap, &FileFormatter{})
+	logger.AddHook(hook)
 }
 
 func Info(v ...interface{}) {
@@ -113,6 +160,26 @@ func Debug(v ...interface{}) {
 
 func Error(v ...interface{}) {
 	logger.Error(v...)
+}
+
+func Warn(v ...interface{}) {
+	logger.Warn(v...)
+}
+
+func Infof(format string, v ...interface{}) {
+	logger.Infof(format, v...)
+}
+
+func Debugf(format string, v ...interface{}) {
+	logger.Debugf(format, v...)
+}
+
+func Errorf(format string, v ...interface{}) {
+	logger.Errorf(format, v...)
+}
+
+func Warnf(format string, v ...interface{}) {
+	logger.Warnf(format, v...)
 }
 
 func InfoData(message string, data map[string]interface{}) {
@@ -137,4 +204,12 @@ func ErrorData(message string, data map[string]interface{}) {
 		fields[k] = v
 	}
 	logger.WithFields(fields).Error(message)
+}
+
+func WarnData(message string, data map[string]interface{}) {
+	fields := logrus.Fields{}
+	for k, v := range data {
+		fields[k] = v
+	}
+	logger.WithFields(fields).Warn(message)
 }

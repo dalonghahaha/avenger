@@ -1,15 +1,17 @@
 package tests
 
 import (
+	"context"
 	"fmt"
 	"testing"
 
-	"github.com/dalonghahaha/avenger/components/zookeeper"
-
 	"github.com/spf13/viper"
+	"gopkg.in/mgo.v2/bson"
+
+	"github.com/dalonghahaha/avenger/components/mongo"
 )
 
-func ZKInit() {
+func MongoInit() {
 	viper.SetConfigName("conf")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./sample/conf")
@@ -17,19 +19,20 @@ func ZKInit() {
 	if err != nil {
 		panic("go fuck yourself!:" + err.Error())
 	}
-	err = zookeeper.Register()
+	err = mongo.Register()
 	if err != nil {
 		panic("Register Fail:" + err.Error())
 	}
 }
 
-func TestZkChildrenW(t *testing.T) {
-	ZKInit()
-	connect := zookeeper.Get("local")
-	children, stat, _, err := connect.ChildrenW("/")
+func TestMongoListDatabaseNames(t *testing.T) {
+	MongoInit()
+	client := mongo.Get("local")
+	result, err := client.ListDatabaseNames(context.TODO(), bson.M{})
 	if err != nil {
 		t.Fatal(err)
 	}
-	fmt.Println(children)
-	fmt.Println(stat)
+	for _, db := range result {
+		fmt.Println(db)
+	}
 }

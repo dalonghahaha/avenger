@@ -30,6 +30,10 @@ component:
         local:
             host: "127.0.0.1"
             port: 19200
+    mongo:
+        local:
+            host: "127.0.0.1"
+            port: 27017
     zookeeper:
         local:
             hosts: "127.0.0.1:2181"

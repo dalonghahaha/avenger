@@ -9,8 +9,8 @@ import (
 	"github.com/olivere/elastic/v7"
 	"github.com/spf13/viper"
 
-	"avenger/components/elasticsearch"
-	"avenger/structs"
+	"github.com/dalonghahaha/avenger/components/elasticsearch"
+	"github.com/dalonghahaha/avenger/structs"
 )
 
 func ESInit() {

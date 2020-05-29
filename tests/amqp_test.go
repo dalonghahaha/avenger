@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 	_amqp "github.com/streadway/amqp"
 
-	"avenger/components/amqp"
+	"github.com/dalonghahaha/avenger/components/amqp"
 )
 
 func AMQPInit() {
