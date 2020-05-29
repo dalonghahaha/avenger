@@ -148,6 +148,8 @@ func GetLogger(name string) (*logrus.Logger, error) {
 	}
 	hook := lfshook.NewHook(pathMap, &FileFormatter{})
 	logger.AddHook(hook)
+	loggers[name] = logger
+	return logger, nil
 }
 
 func Info(v ...interface{}) {
