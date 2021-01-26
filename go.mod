@@ -31,6 +31,7 @@ require (
 	github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71
 	github.com/tidwall/gjson v1.3.5
 	go.mongodb.org/mongo-driver v1.3.3
+	golang.org/x/crypto v0.0.0-20190530122614-20be4c3c3ed5
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/confluentinc/confluent-kafka-go.v100 v100.0.0-20190207121235-de05b1069faa
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
